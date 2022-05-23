@@ -87,6 +87,11 @@ namespace eStoreAPI.Controllers
         {
             try
             {
+                if (id != dto.MemberId)
+                {
+                    return BadRequest();
+                }
+
                 if (!ModelState.IsValid)
                 {
                     return BadRequest();

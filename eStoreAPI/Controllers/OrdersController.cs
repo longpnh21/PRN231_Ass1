@@ -41,6 +41,31 @@ namespace eStoreAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("report")]
+        public IActionResult Report([FromQuery] DateTime? startDate, DateTime? endDate, string searchValue, string orderBy, int pageIndex = 1, int pageSize = 10)
+        {
+            try
+            {
+                if (pageIndex < 1 || pageSize < 1)
+                {
+                    return BadRequest();
+                }
+
+                if (startDate > endDate)
+                {
+                    return BadRequest();
+                }
+
+                var orders = _orderRepository.Report(startDate, endDate, searchValue, pageIndex, pageSize, orderBy);
+                return Ok(orders.Select(e => _mapper.Map<Order, OrderDto>(e)));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

@@ -89,6 +89,22 @@ namespace DataAccess.Daos
             return new PaginatedList<Member>(members, count, pageIndex, pageSize);
         }
 
+        public static Member Login(string email, string password)
+        {
+            var member = new Member();
+            try
+            {
+                using (var context = new FStoreDBContext())
+                {
+                    member = context.Members.Where(e => e.Email.Equals(email) && e.Password.Equals(password)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return member;
+        }
         public static Member GetMemberById(int id)
         {
             var member = new Member();

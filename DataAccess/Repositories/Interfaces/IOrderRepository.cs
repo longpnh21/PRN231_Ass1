@@ -1,4 +1,5 @@
 ﻿using BusinessObject;
+using System;
 using System.Collections.Generic;
 
 namespace DataAccess.Repositories.Interfaces
@@ -10,5 +11,7 @@ namespace DataAccess.Repositories.Interfaces
         Order GetOrderById(int id);
 
         void SaveOrder(Order order);
+
+        List<Order> Report(DateTime? startDate, DateTime? endDate, string searchValue, int pageIndex, int pageSize, string orderBy);
     }
 }

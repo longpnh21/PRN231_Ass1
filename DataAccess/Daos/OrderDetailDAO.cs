@@ -1,4 +1,5 @@
 ﻿using BusinessObject;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +69,7 @@ namespace DataAccess.Daos
                         }
                     }
 
-                    query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                    query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).Include(e => e.Product);
 
                     orderDetails = query.ToList();
                 }

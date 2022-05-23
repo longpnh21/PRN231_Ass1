@@ -1,0 +1,85 @@
+﻿@using BusinessObject.Dtos
+@model IEnumerable<OrderDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiredDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Freight)
+            </th>
+            <th>
+                Total
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+            double total = 0;
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.MemberId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.RequiredDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ShippedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Freight)
+                </td>
+                <td></td>
+           </tr>
+            @foreach(var detail in item.OrderDetails)
+            {
+                <tr>
+                    <td></td>
+                    <td>@detail.Product.ProductName</td>
+                    <td>@detail.UnitPrice</td>
+                    <td>@detail.Quantity</td>
+                    <td>@detail.Discount</td>
+                    @{
+                        total = total + (double)(detail.UnitPrice) * detail.Quantity * (100 - detail.Discount.Value) / 100;
+                    }
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@total</td>
+            </tr>
+        }
+    </tbody>
+</table>

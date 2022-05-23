@@ -8,7 +8,7 @@ using System.Net;
 
 namespace eStoreAPI.Controllers
 {
-    [Route("api/[controller]/orderId")]
+    [Route("api/[controller]/{orderId}")]
     [ApiController]
     public class OrderDetailsController : ControllerBase
     {

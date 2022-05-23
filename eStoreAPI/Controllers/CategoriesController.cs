@@ -93,6 +93,10 @@ namespace eStoreAPI.Controllers
                 {
                     return BadRequest();
                 }
+                if (id != dto.CategoryId)
+                {
+                    return BadRequest();
+                }
 
                 var inDatabase = _categoryRepository.FindCategoryById(id);
                 if (inDatabase == null)

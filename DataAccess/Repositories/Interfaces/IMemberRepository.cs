@@ -14,5 +14,7 @@ namespace DataAccess.Repositories.Interfaces
         void UpdateMember(Member m);
 
         void DeleteMember(Member m);
+
+        Member Login(string email, string password);
     }
 }

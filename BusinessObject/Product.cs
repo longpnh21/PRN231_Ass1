@@ -21,6 +21,7 @@ namespace BusinessObject
         [MaxLength(20)]
         public string Weight { get; set; }
         [Required]
+        [Range(0, double.MaxValue)]
         public decimal UnitPrice { get; set; }
         [Required]
         [Range(0, int.MaxValue)]

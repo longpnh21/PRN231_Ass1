@@ -4,6 +4,8 @@ namespace BusinessObject.Dtos
 {
     public class UpdateProductDto
     {
+        [Required]
+        public int ProductId { get; set; }
         public int? CategoryId { get; set; }
         [Required]
         [MaxLength(40)]

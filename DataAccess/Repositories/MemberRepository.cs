@@ -16,5 +16,6 @@ namespace DataAccess.Repositories
         public List<Member> GetMembers(string searchValue, int pageIndex, int pageSize, string orderBy) => MemberDAO.GetMembers(searchValue, pageIndex, pageSize, orderBy);
 
         public void UpdateMember(Member m) => MemberDAO.UpdateMember(m);
+        public Member Login(string email, string password) => MemberDAO.Login(email, password);
     }
 }

@@ -15,7 +15,7 @@ namespace BusinessObject.Dtos
         [Range(0, double.MaxValue)]
         public decimal UnitPrice { get; set; }
         [Required]
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int UnitsInStock { get; set; }
         public virtual Category Category { get; set; }
     }

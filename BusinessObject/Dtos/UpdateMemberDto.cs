@@ -6,6 +6,8 @@ namespace BusinessObject.Dtos
     public class UpdateMemberDto
     {
         [Required]
+        public int MemberId { get; set; }
+        [Required]
         [MaxLength(100)]
         public string Email { get; set; }
         [Required]

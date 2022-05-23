@@ -63,8 +63,9 @@
                     @Html.DisplayFor(modelItem => item.UnitsInStock)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new {id = item.ProductId}) |
-                    @Html.ActionLink("Delete", "Delete", new {id = item.ProductId})
+                    @Html.ActionLink("Details", "Details", new {productId = item.ProductId}) |
+                    @Html.ActionLink("Edit", "Edit", new {productId = item.ProductId}) |
+                    @Html.ActionLink("Delete", "Delete", new {productId = item.ProductId})
                 </td>
            </tr>
        }
