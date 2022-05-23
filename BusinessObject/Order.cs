@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace BusinessObject
+{
+    public partial class Order
+    {
+        public Order()
+        {
+            OrderDetails = new HashSet<OrderDetail>();
+        }
+
+        public int OrderId { get; set; }
+        public int? MemberId { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
+        public DateTime? RequiredDate { get; set; }
+        public DateTime? ShippedDate { get; set; }
+        public decimal? Freight { get; set; } = 0;
+
+        public virtual Member Member { get; set; }
+        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
+    }
+}
